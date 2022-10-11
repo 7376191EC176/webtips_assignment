@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebTIPS Assignment</title>
+    <link rel="stylesheet" href="CSS/index.css" />
+    <link rel="icon" type="image/jpg" href="assets/fevicon.jpg" />
+  </head>
+  <body>
+    <div id="main-container">
+      <section class="top-container">
+        <div class="city-weather">
+          <div class="location">
+            <div class="city-select">
+              <img
+                class="city-icon"
+                id="city-icon"
+                src="assets/vienna.svg"
+                alt="vienna"
+              />
+              <input list="city-list" name="city" id="city" value="Vienna" />
+              <datalist id="city-list"> </datalist>
+            </div>
+            <div class="date-time">
+              <div class="yel-color">
+                <span id="hour"></span><small><span id="sec"> </span></small>
+                <img
+                  class="time-icon"
+                  id="time-icon"
+                  src="assets/amState.svg"
+                  alt="AM/PM"
+                />
+              </div>
+              <div id="date"></div>
+            </div>
+          </div>
+          <div class="climate-cont">
+            <div class="temp">
+              <div class="temp-C-F">
+                Temp <sup>&deg;</sup>C
+                <br />
+                <big
+                  ><b><span id="temp-C"></span></b
+                ></big>
+              </div>
+              <div class="temp-C-F">
+                Temp F
+                <br />
+                <big
+                  ><b><span id="temp-F"></span></b
+                ></big>
+              </div>
+            </div>
+            <div class="moist">
+              <div class="humid">
+                Humidity
+                <br />
+                <big
+                  ><b><span id="humid"></span></b
+                  ><span id="color-grey"> %</span></big
+                >
+              </div>
+              <div class="preci">
+                Precipitation
+                <br />
+                <big
+                  ><b><span id="preci"></span></b
+                  ><span id="color-grey"> %</span></big
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="time-weather">
+          <div class="weather-hour">
+            <div class="time">NOW</div>
+            <div class="line">|</div>
+            <img class="weather-icon" />
+            <div class="rep"></div>
+          </div>
+          <div class="weather-hour">
+            <div class="time"></div>
+            <div class="line">|</div>
+            <img class="weather-icon" />
+            <div class="rep"></div>
+          </div>
+          <div class="weather-hour">
+            <div class="time"></div>
+            <div class="line">|</div>
+            <img class="weather-icon" />
+            <div class="rep"></div>
+          </div>
+          <div class="weather-hour">
+            <div class="time"></div>
+            <div class="line">|</div>
+            <img class="weather-icon" />
+            <div class="rep"></div>
+          </div>
+          <div class="weather-hour">
+            <div class="time"></div>
+            <div class="line">|</div>
+            <img class="weather-icon" />
+            <div class="rep"></div>
+          </div>
+          <div class="weather-hour">
+            <div class="time"></div>
+            <div class="end">|</div>
+            <img class="weather-icon" />
+            <div class="rep"></div>
+          </div>
+        </div>
+      </section>
+      <section class="black-cont">
+        <section class="middle-container">
+          <div class="city-cont">
+            <div class="disp-count">
+              <label for="count">Display Top</label>
+              <input
+                type="number"
+                id="count"
+                value="4"
+                min="3"
+                max="10"
+                oninput="this.value=(parseInt(this.value)<3)?3:parseInt(this.value)>10?10:this.value"
+              />
+            </div>
+            <div>
+              <button class="icon">
+                <img
+                  class="climate-icon"
+                  src="assets/rainyIcon.svg"
+                  alt="cloudy Icon"
+                />
+              </button>
+            </div>
+            <div>
+              <button class="icon">
+                <img
+                  class="climate-icon"
+                  src="assets/snowflakeIcon.svg"
+                  alt="Snow flake Icon"
+                />
+              </button>
+            </div>
+            <div>
+              <button class="icon">
+                <img
+                  class="climate-icon"
+                  src="assets/sunnyIcon.svg"
+                  alt="Sunny Icon"
+                />
+              </button>
+            </div>
+            <div class="middle-header">Top cities around world</div>
+          </div>
+          <div class="weather-cont">
+            <button class="scroll-icon">
+              <img
+                class="arrow-icon"
+                src="assets/backwardArrow.svg"
+                alt="backward-arrow"
+              />
+            </button>
+            <div class="card-cont" id="card-cont">
+              <div class="weather-elt">
+                <div class="loc-details">
+                  <div class="place">NewDelhi</div>
+                  <div class="sun-icon">
+                    <img class="city-climate-icon" />
+                    <div class="temperature">
+                      <span class="climate-temp"></span><sup>&deg;</sup>C
+                    </div>
+                  </div>
+                </div>
+                <div class="mid-time"></div>
+                <div class="mid-date"></div>
+                <div class="humidity-data">
+                  <img
+                    class="humidity-icon"
+                    src="assets/humidityIcon.svg"
+                    alt="humidityIcon"
+                  />
+                  <div class="humidity"></div>
+                </div>
+                <div class="precipitation-data">
+                  <img
+                    class="precipitation-icon"
+                    src="assets/precipitationIcon.svg"
+                    alt="precipitationIcon"
+                  />
+                  <div class="precipitation"></div>
+                </div>
+              </div>
+              <div id="card-clone" class="card-clone"></div>
+            </div>
+            <button class="scroll-icon">
+              <img
+                class="arrow-icon"
+                src="assets/forwardArrow.svg"
+                alt="forward-arrow"
+              />
+            </button>
+          </div>
+        </section>
+        <section class="city-sort">
+          <div class="sort-header">
+            <div class="sort-topic">Cities across continents at a Glance</div>
+            <div class="sort-continent">
+              <div class="continent-temp">
+                Continent Name
+                <button class="sort-arrow">
+                  <img class="arrow" src="assets/arrow-down.png" alt="↓" />
+                </button>
+              </div>
+              <div class="continent-temp">
+                Temperature
+                <button class="sort-arrow">
+                  <img class="arrow" src="assets/arrow-up.png" alt="↑" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="country-weather" id="country-weather">
+            <div class="location-weather" id="location-weather">
+              <div class="continent">Asia</div>
+              <div class="country-temp">
+                <span class="city-temp"></span><sup>&deg;</sup>C
+              </div>
+              <div class="city-time"></div>
+              <div class="city-preci">
+                <img
+                  class="preci-icon"
+                  src="assets/humidityIcon.svg"
+                  alt="humidityIcon"
+                />
+                <div class="humid-val"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </div>
+  </body>
+  <script type="module" src="./JS/index.js"></script>
+</html>
