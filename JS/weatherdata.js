@@ -4,7 +4,7 @@
  */
 function dataOfAllCities() {
   let dataOfAllCities = new Promise(async (resolve, reject) => {
-    let cityData = await fetch(`http://localhost:8080/all-timezone-cities`, {
+    let cityData = await fetch(`https://eight-flicker-rose.glitch.me/all-timezone-cities`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -23,12 +23,8 @@ function dataOfAllCities() {
  */
 async function getSelectedCityData(selectedCity) {
   try {
-    let link =
-      document.getElementById("city").value === "Vienna"
-        ? `http://localhost:8080/city/?city=Vienna`
-        : `http://localhost:8080/city/?city=${selectedCity}`;
     let selectedCityData = await fetch(
-      link,
+      `https://eight-flicker-rose.glitch.me/city/?city=${selectedCity}`,
       {
         method: "GET",
         headers: {
@@ -43,13 +39,30 @@ async function getSelectedCityData(selectedCity) {
 }
 
 /**
+ * To fetch the future temperature of the city
+ * @return {object} return the default city temperature values
+ */
+async function getViennaCityData() {
+  let selectedCityData = await fetch(
+    `https://eight-flicker-rose.glitch.me/city/?city=Vienna`,
+    {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    }
+  );
+  return selectedCityData;
+}
+
+/**
  * To fetch the temperature for the next 5 hours of the selected city
  * @param {string} cityAndTime contains data of the selected city
  * @return {object} contains the temperature for the next five hours
  */
 async function getSelectedCityWeather(cityAndTime) {
   let selectedCityWeatherData = await fetch(
-    "http://localhost:8080/hourly-forecast",
+    "https://eight-flicker-rose.glitch.me/hourly-forecast",
     {
       method: "POST",
       headers: {
@@ -88,9 +101,9 @@ async function getCityWeather(selectedCity) {
   fetchData = await fetchData.json();
   let fetchfuturetemperature;
   if (fetchData === "error") {
+    fetchData = await getViennaCityData();
+    fetchData = fetchData.json();
     document.getElementById("city").value = "Vienna";
-    fetchData = await getSelectedCityData(selectedCity);
-    fetchData = await fetchData.json();
   }
   fetchfuturetemperature = await getSelectedCityWeather(
     fetchData.city_Date_Time_Name
