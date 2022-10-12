@@ -29,7 +29,7 @@ class SetSelectedCityDetails {
   nullValue = "Nil";
   constructor() {
     this.selectedCity = data[selectedCity.toLowerCase()].cityName;
-    this.imagePath = `./assets/${selectedCity}.svg`;
+    this.imagePath = `./assets/${selectedCity.toLowerCase()}.svg`;
     this.timeZoneOfSelectedCity = data[selectedCity.toLowerCase()].timeZone;
     this.currentTemperature = parseInt(
       data[selectedCity.toLowerCase()].temperature
@@ -593,7 +593,7 @@ class cityClimateData extends SetSelectedCityDetails {
       cityPrecipitation[iterate].innerHTML = currentCityPrecipitation;
       cityIcon[
         iterate
-      ].style.background = `rgb(35 34 34) url(./assets/${data[cityKey].cityName}.svg) no-repeat bottom right`;
+      ].style.background = `rgb(35 34 34) url(./assets/${currentCityName.toLowerCase()}.svg) no-repeat bottom right`;
       cityIcon[iterate].style.backgroundSize = "9rem";
       climateData.updateDateAndTime(cityKey, iterate);
       iterate += 1;
